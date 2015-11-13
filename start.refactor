@@ -1,0 +1,43 @@
+#! /bin/bash
+#set -x
+LOCAL_path=$(pwd)
+TWISTY_PATH=/home/acryl/mapping/preprod/multicam-lpmt/Twisty.light
+host=$1
+#ssh pi@pi mjpg_streamer -b -i \"/usr/lib/input_uvc.so -d /dev/video1  -r 640x480 -f 30\" -o \"/usr/lib/output_http.so -p 8080 -w /var/www/mjpg_streamer\" 
+#ssh pi@pi mjpg_streamer -b -i \"/usr/lib/input_uvc.so -d /dev/video0  -r 640x480 -f 30\" -o \"/usr/lib/output_http.so -p 8090 -w /var/www/mjpg_streamer\"
+
+#ssh pi@${host} mjpg_streamer -b -i \"/usr/lib/input_uvc.so -d /dev/video1  -r 1024x768 -f 30\" -o \"/usr/lib/output_http.so -p 8080 -w /var/www/mjpg_streamer\" 
+#ssh pi@${host} mjpg_streamer -b -i \"/usr/lib/input_uvc.so -d /dev/video0  -r 1024x768 -f 30\" -o \"/usr/lib/output_http.so -p 8090 -w /var/www/mjpg_streamer\"
+#ssh pi@${host} mjpg_streamer -b -i \"/usr/lib/input_uvc.so -d /dev/video0  -r 800x600 -f 30\" -o \"/usr/lib/output_http.so -p 8090 -w /var/www/mjpg_streamer\"
+ssh pi@${host} mjpg_streamer -b -i \"/usr/lib/input_uvc.so -d /dev/video0  -r 640x480 -f 30\" -o \"/usr/lib/output_http.so -p 8090 -w /var/www/mjpg_streamer\"
+
+sudo modprobe v4l2loopback devices=2 
+
+sink=$2
+case ${sink} in
+	loopback)
+		sink1="v4l2sink device=/dev/video1"
+		sink2="v4l2sink device=/dev/video2"
+		break;
+		;;
+	*)
+		sink1="autovideosink"
+		sink2="autovideosink"
+		break;
+		;;
+	esac
+
+#gst-launch-1.0  souphttpsrc location=http://${host}:8080/?action=stream ! jpegdec ! videoconvert ! ${sink1} &
+gst-launch-1.0  souphttpsrc location=http://${host}:8090/?action=stream ! jpegdec ! videoconvert ! ${sink2} &
+
+sleep 10
+${LOCAL_path}/lpmtX2/bin/lpmtX2 2>&1>>lpmt.log &
+
+sleep 10
+sudo chmod 666 /dev/input/event*
+sleep 10
+echo "demarrage remoteX"
+${LOCAL_path}/remoteX/bin/remoteX &
+sleep 5
+pd-extended ${TWISTY_PATH}/twisty.pd &
+

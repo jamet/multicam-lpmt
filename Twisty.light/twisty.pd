@@ -1,0 +1,20 @@
+#N canvas 247 143 745 477 10;
+#X obj -1 1 cnv 15 640 480 empty empty twisty_controll 15 20 0 24 -1
+-262144 0;
+#X obj 239 12 com;
+#X obj 301 2 keys 0;
+#X obj 16 47 sampler_module 0;
+#X obj 6 172 pedalier;
+#X obj 674 37 loadbang;
+#X obj 672 62 s init_bang;
+#X obj 673 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 647 108 s osc;
+#X msg 647 88 send /preview;
+#X obj 342 70 bng 15 250 50 0 empty empty preview 17 7 0 10 -4160 -262144
+-262144;
+#X connect 5 0 6 0;
+#X connect 7 0 5 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
+#X coords 0 -1 1 1 640 480 1 0 0;
