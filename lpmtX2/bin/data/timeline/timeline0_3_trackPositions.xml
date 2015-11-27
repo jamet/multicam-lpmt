@@ -85,7 +85,7 @@
     </element>
     <element name="brightness3">
         <x>0.000000000</x>
-        <y>214.000000000</y>
+        <y>268.000000000</y>
         <width>1024.000000000</width>
         <height>0.000000000</height>
     </element>
@@ -121,7 +121,7 @@
     </element>
     <element name="color_3">
         <x>0.000000000</x>
-        <y>190.000000000</y>
+        <y>244.000000000</y>
         <width>1024.000000000</width>
         <height>0.000000000</height>
     </element>
@@ -157,7 +157,7 @@
     </element>
     <element name="contrast3">
         <x>0.000000000</x>
-        <y>238.000000000</y>
+        <y>292.000000000</y>
         <width>1024.000000000</width>
         <height>0.000000000</height>
     </element>
@@ -229,7 +229,7 @@
     </element>
     <element name="invert3">
         <x>0.000000000</x>
-        <y>286.000000000</y>
+        <y>340.000000000</y>
         <width>1024.000000000</width>
         <height>0.000000000</height>
     </element>
@@ -301,7 +301,7 @@
     </element>
     <element name="saturation3">
         <x>0.000000000</x>
-        <y>262.000000000</y>
+        <y>316.000000000</y>
         <width>1024.000000000</width>
         <height>0.000000000</height>
     </element>
@@ -339,7 +339,7 @@
         <x>0.000000000</x>
         <y>166.000000000</y>
         <width>1024.000000000</width>
-        <height>0.000000000</height>
+        <height>54.000000000</height>
     </element>
     <element name="trigger_3_0">
         <x>0.000000000</x>

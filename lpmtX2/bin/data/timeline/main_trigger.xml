@@ -1,0 +1,12 @@
+<keyframes>
+    <key>
+        <flag>shared_videos_reset</flag>
+        <time>00:00:03:964</time>
+        <value>0.774999976</value>
+    </key>
+    <key>
+        <flag>timeline_stop</flag>
+        <time>00:01:13:964</time>
+        <value>0.774999976</value>
+    </key>
+</keyframes>
